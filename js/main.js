@@ -24,43 +24,145 @@
 */
 
 var listaNumeriMina = [];
-var quantitaMine = 3;
-var estremoSup = 10;
-var tentativi = estremoSup - quantitaMine;
-console.log('tentativi:', tentativi);
-var numeriSceltiUtente = [];
+var quantitaMine = 16;
+var estremoSup = 0; // definisco la variabile della difficoltà del gioco uguale a zero
 
-// costruzione array listaNumeriMina
-while (listaNumeriMina.length < quantitaMine) {
-    var numeroCasuale = generaRandom(1, estremoSup);
-    if (!listaNumeriMina.includes(numeroCasuale)) {
-        listaNumeriMina.push(numeroCasuale);
-    }
-}
-console.log(listaNumeriMina);
+var livelloGioco = parseInt(prompt('Scegli la difficoltà del gioco: 0 - semplice, 1 - intermedio, 2 - difficile'));
+switch (livelloGioco) { // sovrascrivo la variabile della difficoltà gioco in base alla scelta dell'utente: ripeto lo script per ogni caso
+    case 0:
+        estremoSup = 100;
+        var tentativi = estremoSup - quantitaMine;
+        var numeriSceltiUtente = [];
+        // console.log('tentativi:', tentativi);
 
-while (numeriSceltiUtente.length < tentativi) {
-    var numeroInserito = parseInt(prompt('Inserisci un numero da 1 a ' + estremoSup + ' e scopri sei hai colpito una mina!'));
-    if ((numeroInserito > estremoSup) && (numeroInserito < 1)) {
-        console.log('Devi inserire un numero compreso tra 1 e', estremoSup);
-    } else {
-        if (!numeriSceltiUtente.includes(numeroInserito)) {
-            if (!listaNumeriMina.includes(numeroInserito)) {
-                numeriSceltiUtente.push(numeroInserito);
-                console.log(numeriSceltiUtente);
-            } else {
-                console.log('Hai perso!');
-                break;
+        // costruzione array listaNumeriMina
+        while (listaNumeriMina.length < quantitaMine) {
+            var numeroCasuale = generaRandom(1, estremoSup);
+            if (!listaNumeriMina.includes(numeroCasuale)) {
+                listaNumeriMina.push(numeroCasuale);
             }
-        } else {
-            console.log('Questo numero è già stato provato! Ritenta con un numero nuovo!');
         }
-    }
+        console.log(listaNumeriMina);
+
+        // ciclo while per permettere all'utente i vari tentativi di gioco
+        while (numeriSceltiUtente.length < tentativi) {
+            var numeroInserito = parseInt(prompt('Inserisci un numero da 1 a ' + estremoSup + ' e scopri sei hai colpito una mina!'));
+            if (!isNaN(numeroInserito) && !isNaN(livelloGioco)) {
+                if ((numeroInserito > estremoSup) || (numeroInserito < 1)) {
+                    alert('Devi inserire un numero compreso tra 1 e ' + estremoSup);
+                } else {
+                    if (!numeriSceltiUtente.includes(numeroInserito)) {
+                        if (!listaNumeriMina.includes(numeroInserito)) {
+                            numeriSceltiUtente.push(numeroInserito);
+                            console.log(numeriSceltiUtente);
+                        } else {
+                            alert('Hai perso!');
+                            break;
+                        }
+                    } else {
+                        alert('Questo numero è già stato provato! Ritenta con un numero nuovo!');
+                    }
+                }
+            } else {
+                alert('Inserisci un numero!');
+            }
+        }
+
+        if (numeriSceltiUtente.length == tentativi) {
+            alert('HAI VINTO!');
+        }
+        break;
+
+    case 1:
+        estremoSup = 80;
+        var tentativi = estremoSup - quantitaMine;
+        var numeriSceltiUtente = [];
+        // console.log('tentativi:', tentativi);
+
+        // costruzione array listaNumeriMina
+        while (listaNumeriMina.length < quantitaMine) {
+            var numeroCasuale = generaRandom(1, estremoSup);
+            if (!listaNumeriMina.includes(numeroCasuale)) {
+                listaNumeriMina.push(numeroCasuale);
+            }
+        }
+        console.log(listaNumeriMina);
+
+        // ciclo while per permettere all'utente i vari tentativi di gioco
+        while (numeriSceltiUtente.length < tentativi) {
+            var numeroInserito = parseInt(prompt('Inserisci un numero da 1 a ' + estremoSup + ' e scopri sei hai colpito una mina!'));
+            if (!isNaN(numeroInserito) && !isNaN(livelloGioco)) {
+                if ((numeroInserito > estremoSup) || (numeroInserito < 1)) {
+                    alert('Devi inserire un numero compreso tra 1 e ' + estremoSup);
+                } else {
+                    if (!numeriSceltiUtente.includes(numeroInserito)) {
+                        if (!listaNumeriMina.includes(numeroInserito)) {
+                            numeriSceltiUtente.push(numeroInserito);
+                            console.log(numeriSceltiUtente);
+                        } else {
+                            alert('Hai perso!');
+                            break;
+                        }
+                    } else {
+                        alert('Questo numero è già stato provato! Ritenta con un numero nuovo!');
+                    }
+                }
+            } else {
+                alert('Inserisci un numero!');
+            }
+        }
+
+        if (numeriSceltiUtente.length == tentativi) {
+            alert('HAI VINTO!');
+        }
+        break;
+
+    case 2:
+        estremoSup = 50;
+        var tentativi = estremoSup - quantitaMine;
+        var numeriSceltiUtente = [];
+        // console.log('tentativi:', tentativi);
+
+        // costruzione array listaNumeriMina
+        while (listaNumeriMina.length < quantitaMine) {
+            var numeroCasuale = generaRandom(1, estremoSup);
+            if (!listaNumeriMina.includes(numeroCasuale)) {
+                listaNumeriMina.push(numeroCasuale);
+            }
+        }
+        console.log(listaNumeriMina);
+
+        // ciclo while per permettere all'utente i vari tentativi di gioco
+        while (numeriSceltiUtente.length < tentativi) {
+            var numeroInserito = parseInt(prompt('Inserisci un numero da 1 a ' + estremoSup + ' e scopri sei hai colpito una mina!'));
+            if (!isNaN(numeroInserito) && !isNaN(livelloGioco)) {
+                if ((numeroInserito > estremoSup) || (numeroInserito < 1)) {
+                    alert('Devi inserire un numero compreso tra 1 e ' + estremoSup);
+                } else {
+                    if (!numeriSceltiUtente.includes(numeroInserito)) {
+                        if (!listaNumeriMina.includes(numeroInserito)) {
+                            numeriSceltiUtente.push(numeroInserito);
+                            console.log(numeriSceltiUtente);
+                        } else {
+                            alert('Hai perso!');
+                            break;
+                        }
+                    } else {
+                        alert('Questo numero è già stato provato! Ritenta con un numero nuovo!');
+                    }
+                }
+            } else {
+                alert('Inserisci un numero!');
+            }
+        }
+
+        if (numeriSceltiUtente.length == tentativi) {
+            alert('HAI VINTO!');
+        }
+        break;
+    default: console.log('ricarica la pagina e inserisci un numero da 0 a 2');
 }
 
-if (numeriSceltiUtente.length == tentativi) {
-    console.log('HAI VINTO!');
-}
 
 
 function generaRandom(min, max) {
