@@ -45,7 +45,7 @@ var boom = false; // variabile sentinella: finchè bomba resta falsa il ciclo co
 while ((bandierinePiazzate.length < bandierineMax) && (boom === false)) {
     var bandierinaDaPiazzare = parseInt(prompt('Scrivi un numero da 1 a ' + dimensioneCampo));
     if (!bandierinePiazzate.includes(bandierinaDaPiazzare)) {
-        if (!isNaN(bandierinaDaPiazzare) && (bandierinaDaPiazzare >= 1) && (bandierinaDaPiazzare <= dimensioneCampo)) {
+        if (!isNaN(bandierinaDaPiazzare) && (bandierinaDaPiazzare >= 1) && (bandierinaDaPiazzare <= dimensioneCampo)) { // controllo errori: il ciclo si interrompe se l'utente inserisce una parola o un numero non compreso nell'intervallo 1-100 (estremi inclusi)
             if (!posizioneMine.includes(bandierinaDaPiazzare)) {
                 bandierinePiazzate.push(bandierinaDaPiazzare);
                 if (bandierinePiazzate.length == bandierineMax) {
@@ -107,7 +107,7 @@ function generaRandomMinMax(min, max) { // funzione che genera numeri random ins
 
 
 
-// /*   VERSIONE INIZIALE
+// /*   VERSIONE INIZIALE prima della correzione in classe del 26/02 mattina
 //     SCOPO DEL GIOCO:
 //     1. Il computer deve generare 16 numeri casuali tra 1 e 100.
 //     2. In seguito deve chiedere all’utente di inserire un numero alla volta, sempre compreso tra 1 e 100.
